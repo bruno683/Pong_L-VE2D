@@ -2,8 +2,8 @@
 
 love.graphics.setDefaultFilter("nearest", "nearest")
 
-_WINDOW_WIDTH = 1280
-_WINDOW_HEIGHT = 720
+_WINDOW_WIDTH = 1920
+_WINDOW_HEIGHT = 1080
 
 
 
@@ -19,7 +19,7 @@ end
 
 
 function love.update(dt)
-  -- body...
+
 end
 
 
