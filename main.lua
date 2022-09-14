@@ -7,16 +7,16 @@ local padOne = {}
 padOne.x = 75
 padOne.y = 80
 padOne.width = 15
-padOne.height = 40
+padOne.height = 60
 
 -- settings speed
-local paddleSpeed = 600
-local angle = math.rad(90)
+local paddleSpeed = 800
+
 
 
 local padTwo = {}
 padTwo.width = 15
-padTwo.height = 40
+padTwo.height = 60
 padTwo.x = _WINDOW_WIDTH - (75 + padTwo.width)
 padTwo.y = _WINDOW_HEIGHT - 65
 
@@ -65,18 +65,18 @@ function love.update(dt)
     padTwo.y = padTwo.y + -paddleSpeed * dt
   end
   --playerOne limits
-  if padOne.y <= 80 then
-    padOne.y = 80
-  elseif padOne.y >= _WINDOW_HEIGHT - (padOne.height + 25) then
-    padOne.y = _WINDOW_HEIGHT - (padOne.height + 25)
+  if padOne.y <= 90 then
+    padOne.y = 90
+  elseif padOne.y >= _WINDOW_HEIGHT - (padOne.height + 45) then
+    padOne.y = _WINDOW_HEIGHT - (padOne.height + 45)
   else
     padOne.y = padOne.y
   end
   --playerTwo limits
-  if padTwo.y <= 80 then
-    padTwo.y = 80
-  elseif padTwo.y >= _WINDOW_HEIGHT - (padOne.height + 25) then
-    padTwo.y = _WINDOW_HEIGHT - (padOne.height + 25)
+  if padTwo.y <= 90 then
+    padTwo.y = 90
+  elseif padTwo.y >= _WINDOW_HEIGHT - (padOne.height + 45) then
+    padTwo.y = _WINDOW_HEIGHT - (padOne.height + 45)
   else
     padTwo.y = padTwo.y
   end
@@ -142,7 +142,8 @@ function love.draw()
   love.graphics.print(tostring(score1), 25, 30)
   --display score right
   love.graphics.print(tostring(score2), _WINDOW_WIDTH - 63, 30)
-
+  love.graphics.line(0, 85, _WINDOW_WIDTH,85)
+  love.graphics.line(0, _WINDOW_HEIGHT -  45, _WINDOW_WIDTH,_WINDOW_HEIGHT - 45)
 
 
   --render first pad
