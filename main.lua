@@ -94,6 +94,7 @@ function love.draw()
   love.graphics.setFont(wordFont)
   --set color
   love.graphics.setColor(1, 1, 1, 1)
+  --set title
   love.graphics.printf("LÖVE Pong !",
     0,
     46,
@@ -103,9 +104,9 @@ function love.draw()
   love.graphics.setFont(scoreFont)
 
   --display Score left
-  love.graphics.printf(score1, 25, 30, _WINDOW_WIDTH, 'left')
+  love.graphics.print(tostring(score1), 25, 30)
   --display score right
-  love.graphics.print(score2, _WINDOW_WIDTH - 78, 30)
+  love.graphics.print(tostring(score2), _WINDOW_WIDTH - 63, 30)
 
 
 
