@@ -23,11 +23,13 @@ padTwo.y = _WINDOW_HEIGHT - 65
 --ball properties
 local ball = {}
 ball.radius = 10
+ball.width = ball.radius*2
+ball.height = ball.radius*2
 ball.color = love.graphics.setColor(0, 1, 0, 1)
 ball.x = _WINDOW_WIDTH/2 - ball.radius
 ball.y = _WINDOW_HEIGHT/2 - ball.radius
 ball.vx = 500
-ball.vy = -500
+ball.vy = 500
 
 
 local wordFont = love.graphics.newFont('/Fonts/RetroGaming.ttf', 16)
@@ -90,12 +92,28 @@ if ball.y <= 80 then
   ball.y = 80
   ball.vy = -ball.vy
 end
---f ball.y <= 65 then
---  ball.y = angle + ball.speed
---end
+
+if CheckCollision(padTwo.x, padTwo.y, padTwo.width, padTwo.height, ball.x, ball.y, ball.width, ball.height) then
+  ball.x = ball.x - ball.radius
+  ball.vx = -ball.vx
+  ball.vy = ball.vy
+end
+
+if CheckCollision(padOne.x, padOne.y, padOne.width, padOne.height, ball.x, ball.y, ball.width, ball.height) then
+  ball.x = ball.x + ball.radius
+  ball.vx = -ball.vx
+  ball.vy = ball.vy
+end
+
+end
 
 
-
+--Method to detect collision between two objects
+function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+  return x1 < x2+w2 and
+         x2 < x1+w1 and
+         y1 < y2+h2 and
+         y2 < y1+h1
 end
 
 
