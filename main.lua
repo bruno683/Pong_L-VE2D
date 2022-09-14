@@ -24,8 +24,11 @@ end
 
 function love.draw()
   love.graphics.setColor(1, 1, 1, 1)
-  love.graphics.printf("Hello Pong !",0, _WINDOW_HEIGHT/2 - 6, _WINDOW_WIDTH, 'center')
-  -- body...
+  love.graphics.printf("Hello Pong !",
+    0,
+    _WINDOW_HEIGHT/2 - 6,
+    _WINDOW_WIDTH,
+    'center')
 end
 
 
