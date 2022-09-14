@@ -50,14 +50,14 @@ function love.update(dt)
   end
 
   if love.keyboard.isDown('z') then
-    padOne.y = padOne.y - paddleSpeed * dt
+    padOne.y = padOne.y + -paddleSpeed * dt
   end
   --playerTwo moves
   if love.keyboard.isDown('down') then
     padTwo.y = padTwo.y + paddleSpeed * dt
   end
   if love.keyboard.isDown('up') then
-    padTwo.y = padTwo.y - paddleSpeed * dt
+    padTwo.y = padTwo.y + -paddleSpeed * dt
   end
   --playerOne limits
   if padOne.y <= 60 then
@@ -67,7 +67,7 @@ function love.update(dt)
   else
     padOne.y = padOne.y
   end
-  --
+  --playerTwo limits
   if padTwo.y <= 60 then
     padTwo.y = 60
   elseif padTwo.y >= _WINDOW_HEIGHT - padTwo.height then
@@ -75,6 +75,7 @@ function love.update(dt)
   else
     padTwo.y = padTwo.y
   end
+
 
 
 end
