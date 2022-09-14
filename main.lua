@@ -1,5 +1,3 @@
-
-
 love.graphics.setDefaultFilter("nearest", "nearest")
 
 _WINDOW_WIDTH = 1280
@@ -11,8 +9,10 @@ padOne.y = 80
 padOne.width = 15
 padOne.height = 40
 
-
+-- settings speed
 local paddleSpeed = 600
+local angle = math.rad(90)
+
 
 local padTwo = {}
 padTwo.width = 15
@@ -26,6 +26,9 @@ ball.radius = 10
 ball.color = love.graphics.setColor(0, 1, 0, 1)
 ball.x = _WINDOW_WIDTH/2 - ball.radius
 ball.y = _WINDOW_HEIGHT/2 - ball.radius
+ball.dirX = love.math.random(-1, 1)
+ball.dirY = love.math.random(-1, 1)
+ball.speed = 500
 
 
 local wordFont = love.graphics.newFont('/Fonts/RetroGaming.ttf', 16)
@@ -76,6 +79,17 @@ function love.update(dt)
   else
     padTwo.y = padTwo.y
   end
+--ball moves
+ball.x = ball.x + ball.dirX + ball.speed * dt
+ball.y = ball.y + ball.dirY + ball.speed * dt
+
+if ball.y >= _WINDOW_HEIGHT - 65 then
+
+  ball.y = ball.y + ball.dirY + -ball.speed
+end
+--f ball.y <= 65 then
+--  ball.y = angle + ball.speed
+--end
 
 
 
