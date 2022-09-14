@@ -26,9 +26,8 @@ ball.radius = 10
 ball.color = love.graphics.setColor(0, 1, 0, 1)
 ball.x = _WINDOW_WIDTH/2 - ball.radius
 ball.y = _WINDOW_HEIGHT/2 - ball.radius
-ball.dirX = love.math.random(-1, 1)
-ball.dirY = love.math.random(-1, 1)
-ball.speed = 500
+ball.vx = 500
+ball.vy = -500
 
 
 local wordFont = love.graphics.newFont('/Fonts/RetroGaming.ttf', 16)
@@ -80,12 +79,16 @@ function love.update(dt)
     padTwo.y = padTwo.y
   end
 --ball moves
-ball.x = ball.x + ball.dirX + ball.speed * dt
-ball.y = ball.y + ball.dirY + ball.speed * dt
+ball.x = ball.x + ball.vx * dt
+ball.y = ball.y + ball.vy * dt
 
 if ball.y >= _WINDOW_HEIGHT - 65 then
-
-  ball.y = ball.y + ball.dirY + -ball.speed
+  ball.y =  _WINDOW_HEIGHT - 65
+  ball.vy = -ball.vy
+end
+if ball.y <= 80 then
+  ball.y = 80
+  ball.vy = -ball.vy
 end
 --f ball.y <= 65 then
 --  ball.y = angle + ball.speed
@@ -129,7 +132,7 @@ function love.draw()
   --render second pad
   love.graphics.rectangle('fill', padTwo.x, padTwo.y, padTwo.width, padTwo.height)
   -- render the ball
-  love.graphics.circle('fill', ball.x, ball.y, ball.radius, ball.color)
+  love.graphics.circle('fill', ball.x, ball.y, ball.radius)
 
 
 
